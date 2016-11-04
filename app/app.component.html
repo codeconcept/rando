@@ -1,9 +1,4 @@
-<h2>Hello Rando !!</h2>
-
-<div>Bienvenue sur ce site consacré à la randonnée</div>
-
-<ul>
-    <li *ngFor="let hike of hikes">
-        {{ hike.name }} - {{ hike.description }}
-    </li>
-</ul>
+<div class='container'>
+    <router-outlet></router-outlet>
+</div>
+<hr>    
