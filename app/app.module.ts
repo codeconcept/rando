@@ -8,6 +8,7 @@ import { HikeListComponent } from './hike/hike-list.component';
 import { PageNotFoundComponent } from './page-not-found.component';
 import { HomeModule } from './home/home.module';
 import { HomeComponent } from './home/home.component';
+import { HikeDetailsComponent } from './hike/hike-details.component'
 
 @NgModule({
   imports:      [ 
@@ -17,6 +18,7 @@ import { HomeComponent } from './home/home.component';
     RouterModule.forRoot([
       { path: 'home', component: HomeComponent },
       { path: 'hikes', component: HikeListComponent },
+      { path: 'hike/:id', component: HikeDetailsComponent },
       { path: '', redirectTo: 'home', pathMatch: 'full' },
 	    { path: '**', component: PageNotFoundComponent }
     ]) 

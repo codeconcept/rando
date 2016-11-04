@@ -1,5 +1,6 @@
 [
     {
+        "id": 1,
         "name": "Saint-Aubun-du-Cormier",
         "region": "Bretagne",
         "area": "Ille-et-Vilaine",
@@ -12,6 +13,7 @@
         "evalution": "[4, 5, 3]"
     },
     {
+        "id": 2,
         "name": "Vallée du Couesnon",
         "region": "Bretagne",
         "area": "Ille-et-Vilaine",

@@ -3,7 +3,7 @@
 <div>
     <ul>
         <li *ngFor="let hike of hikes">
-            {{ hike.name }} - {{ hike.description }}
+            <a [routerLink]="['/hike', hike.id]">{{ hike.name }}</a> - {{ hike.description }}
         </li>
     </ul>
 </div>
