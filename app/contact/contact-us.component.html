@@ -1,24 +1,33 @@
 <h2>Contactez-nous</h2>
 
-<form>
-    <div class="form-group">
-        <label for="subject">Sujet</label>
+<form #form="ngForm" novalidate>
+    <div class="form-group" 
+        [class.has-error]="msgSubject.invalid && msgSubject.touched">
+        <label for="subject" class="control-label">Sujet</label>
         <input type="text" 
+                #msgSubject="ngModel"
+                required
+                [(ngModel)]="subject"
+                name="subject"
                 id="subject" 
                 class="form-control" 
                 placeholder="sujet">
     </div>
-    <div class="form-group">
-        <label for="message">Message</label>
+    <div class="form-group"
+        [class.has-error]="msgContent.invalid && msgContent.touched">
+        <label for="message" class="control-label">Message</label>
         <textarea 
                 rows="3"
-                id="message" 
-                class="form-control" 
-                placeholder="message">
+                #msgContent="ngModel"
+                required
+                [(ngModel)]="content"
+                name="content"
+                id="content" 
+                class="form-control">
         </textarea>        
     </div>
         <div class="form-group">
-        <label for="service">Service</label>
+        <label for="service" class="control-label">Service</label>
         <select id="service" class="form-control">
             <option value="tech">technique</option>
             <option value="sales">commercial</option>

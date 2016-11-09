@@ -4,4 +4,7 @@ import { Component } from '@angular/core';
     moduleId: module.id,
     templateUrl: 'contact-us.component.html'
 })
-export class ContactUsComponent {}
+export class ContactUsComponent {
+    subject: string;
+    content: string;
+}
