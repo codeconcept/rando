@@ -1,5 +1,9 @@
 <h2>Contactez-nous</h2>
-
+<!--
+    ng-touched/ng-untouched: field did or did not have focus
+    ng-pristine/ng-dirty: field in its original state or field value has changed
+    ng-valid/ng-invalid: state in relation to rules (required, pattern...)
+-->
 <form #form="ngForm" novalidate>
     <div class="form-group" 
         [class.has-error]="msgSubject.invalid && msgSubject.touched">
@@ -34,5 +38,6 @@
             <option value="guide">guide moyenne montagne</option>
         </select>    
     </div>
-    <button type="submit" class="btn btn-default">envoyer</button>
+    <button type="submit" class="btn btn-primary" [disabled]="form.invalid">envoyer</button>
 </form>
+Formulaire valide ? {{ form.valid }}
