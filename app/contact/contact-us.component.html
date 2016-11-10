@@ -4,7 +4,7 @@
     ng-pristine/ng-dirty: field in its original state or field value has changed
     ng-valid/ng-invalid: state in relation to rules (required, pattern...)
 -->
-<form #form="ngForm" novalidate>
+<form #form="ngForm" (submit)="sendMessage(form)" novalidate>
     <div class="form-group" 
         [class.has-error]="msgSubject.invalid && msgSubject.touched">
         <label for="subject" class="control-label">Sujet</label>
@@ -32,7 +32,9 @@
     </div>
         <div class="form-group">
         <label for="service" class="control-label">Service</label>
-        <select id="service" class="form-control">
+        <select id="service" class="form-control" 
+            [(ngModel)]="service" name="service">
+            <option value="">---</option>
             <option value="tech">technique</option>
             <option value="sales">commercial</option>
             <option value="guide">guide moyenne montagne</option>

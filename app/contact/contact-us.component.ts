@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
     moduleId: module.id,
@@ -7,4 +8,8 @@ import { Component } from '@angular/core';
 export class ContactUsComponent {
     subject: string;
     content: string;
+
+    sendMessage(form: NgForm) {
+        console.log(form.value);
+    }
 }
