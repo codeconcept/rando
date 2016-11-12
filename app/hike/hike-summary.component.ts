@@ -8,16 +8,16 @@ import { Hike } from '../shared/hike';
 })
 export class HikeSummary {
     @Input() hike: Hike;
-    @Output() addhikeasfavorite = new EventEmitter<Hike>();
+    @Output() togglehikeasfavorite = new EventEmitter<Hike>();
    
-    addAsTodoHike(isAdded:any) {
+    toggleAsTodoHike(isAdded:any) {
         console.log(event);
         if(isAdded) {
             this.hike.dateAddedAsTodo = Date.now();
-            this.addhikeasfavorite.emit(this.hike);
+            this.togglehikeasfavorite.emit(this.hike);
         } else {
             delete this.hike.dateAddedAsTodo;
-            this.addhikeasfavorite.emit(this.hike);
+            this.togglehikeasfavorite.emit(this.hike);
         }
     }
 

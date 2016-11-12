@@ -24,7 +24,7 @@ export class HikeListComponent  implements OnInit {
                                 err => console.error(err.status));
     }
 
-    addToMyTodoHikes(hikeToAdd: Hike) {
+    toggleToMyTodoHikes(hikeToAdd: Hike) {
         console.log(`Hike ${hikeToAdd.name} added on ${hikeToAdd.dateAddedAsTodo}`);
         console.log(JSON.stringify(hikeToAdd));
     }
