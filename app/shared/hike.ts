@@ -8,5 +8,6 @@ export class Hike {
     duration: number;
     heightDifference: number;
     description: string;
-    evalution: number[]
+    evalution: number[];
+    dateAddedAsTodo?: number;
 }

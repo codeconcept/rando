@@ -4,5 +4,7 @@
   </div>
   <div class="panel-body">
     {{ hike.description }}
+    <br>
+    <input type="checkbox" (change)="addAsTodoHike($event.target.checked)">à faire
   </div>
 </div>

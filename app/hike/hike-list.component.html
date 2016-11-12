@@ -7,7 +7,7 @@
 <div>
     <ul>
         <li *ngFor="let hike of hikes | hikeFilter:searchTerm">             
-            <hike-summary [hike]="hike"></hike-summary>
+            <hike-summary [hike]="hike" (addhikeasfavorite)="addToMyTodoHikes($event)"></hike-summary>
         </li>
     </ul>
 </div>
