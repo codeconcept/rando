@@ -3,11 +3,11 @@
 <div>
     Filtrer par : <input type="text" [(ngModel)]="searchTerm" placeholder="mots clés ...">
 </div>
-
+<br>
 <div>
     <ul>
-        <li *ngFor="let hike of hikes | hikeFilter:searchTerm">
-            <a [routerLink]="['/hike', hike.id]">{{ hike.name }}</a> - {{ hike.description }}
+        <li *ngFor="let hike of hikes | hikeFilter:searchTerm">             
+            <hike-summary [hike]="hike"></hike-summary>
         </li>
     </ul>
 </div>

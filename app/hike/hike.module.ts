@@ -8,10 +8,11 @@ import { HikeListComponent }  from './hike-list.component';
 import { HikeService } from '../shared/hike.service';
 import { HikeDetailsComponent } from './hike-details.component';
 import { HikeFilterPipe } from '../hike/hike-filter.pipe';
-
+import { HikeSummary } from '../hike/hike-summary.component';
+ 
 @NgModule({
   imports:      [ CommonModule, HttpModule, RouterModule, FormsModule ],
-  declarations: [ HikeListComponent, HikeDetailsComponent, HikeFilterPipe ],
+  declarations: [ HikeListComponent, HikeDetailsComponent, HikeFilterPipe, HikeSummary ],
   exports: [HikeListComponent],
   providers: [ HikeService ]
 })
