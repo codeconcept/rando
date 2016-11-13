@@ -12,6 +12,7 @@ import { HikeSummary } from './hike-summary.component';
 export class HikeListComponent  implements OnInit {
     hikes: Hike[];
     searchTerm: string;
+    errorMessage: string = '';
 
     constructor(private _hikeService: HikeService){ }
 
@@ -21,7 +22,7 @@ export class HikeListComponent  implements OnInit {
         this._hikeService.getHikesFromAPI()
                             .subscribe(
                                 res => this.hikes = res,
-                                err => console.error(err.status));
+                                err => this.errorMessage = err);
     }
 
     toggleToMyTodoHikes(hikeToAdd: Hike) {

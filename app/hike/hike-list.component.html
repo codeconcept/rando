@@ -4,6 +4,13 @@
     Filtrer par : <input type="text" [(ngModel)]="searchTerm" placeholder="mots clés ...">
 </div>
 <br>
+
+<div class="alert alert-danger" role="alert"*ngIf="errorMessage.length > 0">
+  <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+  <span class="sr-only">Erreur de communication avec le serveur </span>
+  {{errorMessage}}
+</div>
+
 <div>
     <ul>
         <li *ngFor="let hike of hikes | hikeFilter:searchTerm">             

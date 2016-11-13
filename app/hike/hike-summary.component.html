@@ -3,8 +3,11 @@
     <h3 class="panel-title"> <a [routerLink]="['/hike', hike.id]">{{ hike.name }}</a></h3>
   </div>
   <div class="panel-body">
-    {{ hike.description }}
-    <br>
-    <input type="checkbox" (change)="toggleAsTodoHike($event.target.checked)">à faire
+    {{ hike.description }}        
+    <div class="checkbox">
+      <label>
+        <input type="checkbox"(change)="toggleAsTodoHike($event.target.checked)"> rando à faire
+      </label>
+    </div>
   </div>
 </div>

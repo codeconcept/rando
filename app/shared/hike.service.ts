@@ -4,6 +4,8 @@ import {Http } from '@angular/http';
 import { Hike } from './hike';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
+import {Observable} from 'rxjs/Observable';
+import 'rxjs/add/observable/throw';
 
 
 @Injectable()
@@ -46,6 +48,10 @@ export class HikeService {
     getHikesFromAPI() {
         return this._http.get('app/api/hikes.json')
             .do(x => console.log(x))
-            .map(hikes => hikes.json());
+            .map(hikes => hikes.json())
+            .catch(error => {
+                let errorMessage = `Une erreur ${error.status} est survenue en tentant de joindre ${error.url}`;
+                return Observable.throw(errorMessage);
+            });
     }
 }
