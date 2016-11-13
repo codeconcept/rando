@@ -1,8 +1,24 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ViewEncapsulation } from '@angular/core';
 import { Hike } from '../shared/hike';
 
 @Component({
     moduleId: module.id,
+    // ViewEncapsulation.Emulated allows external global style but local component style DON'T goes out
+    // ViewEncapsulation.Native to ignore external global style
+    // ViewEncapsulation.None allows local style to apply also externally
+    encapsulation: ViewEncapsulation.Emulated, 
+    styles: [`
+        a {
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #999;
+        }
+
+
+    `
+    ],
     selector: "hike-summary",
     templateUrl: "hike-summary.component.html"
 })
