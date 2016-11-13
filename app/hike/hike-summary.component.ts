@@ -15,8 +15,6 @@ import { Hike } from '../shared/hike';
         a:hover {
             color: #999;
         }
-
-
     `
     ],
     selector: "hike-summary",

@@ -1,4 +1,4 @@
-export class Hike {
+export interface Hike {
     name: string;
     area: string;
     region: string;
