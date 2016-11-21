@@ -11,7 +11,13 @@ import { HikeFilterPipe } from '../hike/hike-filter.pipe';
 import { HikeSummary } from '../hike/hike-summary.component';
  
 @NgModule({
-  imports:      [ CommonModule, HttpModule, RouterModule, FormsModule ],
+  imports:      [ CommonModule, 
+                  HttpModule, 
+                  FormsModule,
+                  RouterModule.forChild([
+                    { path: 'hikes', component: HikeListComponent },
+                    { path: 'hike/:id', component: HikeDetailsComponent }
+                  ]) ],
   declarations: [ HikeListComponent, HikeDetailsComponent, HikeFilterPipe, HikeSummary ],
   exports: [HikeListComponent],
   providers: [ HikeService ]
