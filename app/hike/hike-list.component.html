@@ -13,7 +13,7 @@
 
 <div>
     <ul>
-        <li *ngFor="let hike of hikes | hikeFilter:searchTerm">             
+        <li *ngFor="let hike of hikes | hikeFilter:searchTerm" [@onHikesDisplay]="'onFirstDisplay'">             
             <hike-summary [hike]="hike" (togglehikeasfavorite)="toggleToMyTodoHikes($event)"></hike-summary>
         </li>
     </ul>
