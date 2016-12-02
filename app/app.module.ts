@@ -6,6 +6,7 @@ import { AppComponent }  from './app.component';
 import { HikeModule } from './hike/hike.module';
 import { HomeModule } from './home/home.module';
 import { ContactModule } from './contact/contact.module';
+import { MapModule } from './map/map.module';
 import { PageNotFoundComponent } from './page-not-found.component';
 
 @NgModule({
@@ -13,6 +14,7 @@ import { PageNotFoundComponent } from './page-not-found.component';
     BrowserModule, 
     HikeModule, 
     HomeModule,
+    MapModule,
     ContactModule,
     RouterModule.forRoot([            
       { path: '', redirectTo: 'home', pathMatch: 'full' },

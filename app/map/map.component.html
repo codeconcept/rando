@@ -1,0 +1,19 @@
+<div class="row">
+    <h2>Carte de votre prochaine randonnée</h2>
+
+    <sebm-google-map [latitude]="lat" [longitude]="lng">
+        <sebm-google-map-marker 
+            [latitude]="lat" 
+            [longitude]="lng" 
+            [markerDraggable]="true"
+            (dragEnd)="onCoordMarkerDropped($event)"
+            ></sebm-google-map-marker>
+    </sebm-google-map>
+
+    <div *ngIf="markerWasDropped">
+        latitude : {{droppedLat}} longitude : {{droppedLng}}
+    </div>
+    <div *ngIf="!markerWasDropped">
+        Veuillez déplacer le marqueur pour obtenir des coordonnées GPS
+    </div>
+</div>
