@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ApplicationRef } from '@angular/core';
 import {GoogleMapsAPIWrapper} from 'angular2-google-maps/core';
 import { MapService } from './map.service';
 
@@ -25,12 +25,15 @@ export class MapComponent implements OnInit {
     markersFromCoords: marker[] = [];
   
 
-    constructor(private _mapService: MapService) {
+    constructor(private _mapService: MapService, private _applicationRef: ApplicationRef) {
 
     }
 
     ngOnInit() {    
         // this.initMarkerByCoords();        
+    }
+
+    ngAfterViewInit() {
     }
 
     geocode() {
@@ -52,7 +55,9 @@ export class MapComponent implements OnInit {
         };
 
         this.markers  = [ ...this.markers, marker];
-        console.log(this.markers);        
+        console.log(this.markers);
+        this._applicationRef.tick();
+        
     }
 
     onCoordMarkerDropped(event: any) {
