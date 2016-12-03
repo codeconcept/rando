@@ -1,19 +1,63 @@
 <div class="row">
     <h2>Carte de votre prochaine randonnée</h2>
+    <div>
+        <input type="text" value="" placeholder="votre point de départ" [(ngModel)]="startingPoint" class="start">
+        <button class="btn btn-primary" (click)="geocode()">localiser</button> &nbsp; nb markers : {{ markers.length }}
+    </div>    
+    <br>
+    <div>
+        <form (submit)="addMarkerByCoords(form.value)" #form="ngForm">
+            <label for="markerByCoordsLat">Latitude</label>
+            <input type="text" name="markerByCoordsLat" ngModel id="markerByCoordsLat">
 
-    <sebm-google-map [latitude]="lat" [longitude]="lng">
-        <sebm-google-map-marker 
-            [latitude]="lat" 
-            [longitude]="lng" 
-            [markerDraggable]="true"
-            (dragEnd)="onCoordMarkerDropped($event)"
-            ></sebm-google-map-marker>
-    </sebm-google-map>
+            <label for="markerByCoordsLng">Longitude</label>
+            <input type="text" name="markerByCoordsLng" ngModel id="markerByCoordsLng">
+
+            <button type="submit">ajouter</button> 
+
+        </form>        
+    </div>
+    
+    <div>
+        <sebm-google-map [latitude]="lat" [longitude]="lng">
+
+            <sebm-google-map-marker 
+                [latitude]="lat" 
+                [longitude]="lng" 
+                [markerDraggable]="true"
+                [title]="markerTitle"
+                (dragEnd)="onCoordMarkerDropped($event)"
+                [iconUrl]="icon"
+                >
+            </sebm-google-map-marker>
+
+            <sebm-google-map-marker  
+                *ngFor="let m of markers; let i = index"
+                [latitude]="m.lat" 
+                [longitude]="m.lng" 
+                [markerDraggable]="m.draggable"
+                [title]="m.title"
+                >
+            </sebm-google-map-marker>
+
+            <sebm-google-map-marker  
+                *ngFor="let m of markersFromCoords; let i = index"
+                [latitude]="m.lat" 
+                [longitude]="m.lng" 
+                [markerDraggable]="m.draggable"
+                [title]="m.title"
+                [iconUrl]="m.icon"
+                >
+            </sebm-google-map-marker>            
+
+        </sebm-google-map>
+
+    </div>    
 
     <div *ngIf="markerWasDropped">
         latitude : {{droppedLat}} longitude : {{droppedLng}}
     </div>
     <div *ngIf="!markerWasDropped">
-        Veuillez déplacer le marqueur pour obtenir des coordonnées GPS
+        Veuillez <b>déplacer le marqueur</b> pour obtenir des coordonnées GPS (<b>latitude</b> et <b>longitude</b>)
     </div>
 </div>
