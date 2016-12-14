@@ -7,9 +7,8 @@ import { Observer} from 'rxjs/Observer';
 declare var google: any;
 
 @Injectable()
-export class MapService extends GoogleMapsAPIWrapper{ 
-    constructor(private __loader: MapsAPILoader, private __zone: NgZone) {
-        super(__loader, __zone);
+export class MapService { 
+    constructor(private googleMapsAPIWrapper: GoogleMapsAPIWrapper) {
     }
 
     getLatLng(address: string) {        
@@ -27,5 +26,5 @@ export class MapService extends GoogleMapsAPIWrapper{
                 }
             });
         })
-    }
+    }    
 }

@@ -2,7 +2,8 @@
     <h2>Carte de votre prochaine randonnée</h2>
     <div>
         <input type="text" value="" placeholder="votre point de départ" [(ngModel)]="startingPoint" class="start">
-        <button class="btn btn-primary" (click)="geocode()">localiser</button> &nbsp; nb markers : {{ markers.length }}
+        <button class="btn btn-primary" (click)="geocode()">localiser</button>
+        <button class="btn btn-danger" (click)="resetStartingPoint()">remise à zéro</button>
     </div>    
     <br>
     <div>
@@ -37,6 +38,8 @@
                 [longitude]="m.lng" 
                 [markerDraggable]="m.draggable"
                 [title]="m.title"
+                (dragEnd)="updatePolyline($event)"
+                [iconUrl]="m.icon"
                 >
             </sebm-google-map-marker>
 
@@ -48,7 +51,16 @@
                 [title]="m.title"
                 [iconUrl]="m.icon"
                 >
-            </sebm-google-map-marker>            
+            </sebm-google-map-marker> 
+
+            <sebm-google-map-polyline [strokeColor]="red">
+                <sebm-google-map-polyline-point 
+                    *ngFor="let point of pointsForPolyline"
+                    [latitude]="point.lat" 
+                    [longitude]="point.lng"      
+                    >
+                </sebm-google-map-polyline-point>
+            </sebm-google-map-polyline>         
 
         </sebm-google-map>
 

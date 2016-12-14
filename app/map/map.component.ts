@@ -1,5 +1,5 @@
-import { Component, OnInit, ApplicationRef } from '@angular/core';
-import {GoogleMapsAPIWrapper} from 'angular2-google-maps/core';
+import { Component, OnInit, ApplicationRef, Directive, ViewChild } from '@angular/core';
+import { SebmGoogleMapPolyline } from 'angular2-google-maps/core';
 import { MapService } from './map.service';
 
 declare var google:any;
@@ -14,7 +14,7 @@ export class MapComponent implements OnInit {
     // Mézières-sur-Couesnon    
     lat: number = 48.30725;
     lng: number =  -1.43307;
-    icon: string = "app/map/images/yellowmarker.png";
+    icon: string = "app/map/images/greenmarker.png";
 
     markerWasDropped: boolean = false;
     droppedLat: number;
@@ -22,11 +22,13 @@ export class MapComponent implements OnInit {
     startingPoint: string = "La ville Ollivier, 35140 Mézières-sur-Couesnon, France";
     markerTitle: string = "déplacer le marqueur pour récupérer des coordonnées";
     markers: marker[] = [];
-    markersFromCoords: marker[] = [];
+    markersFromCoords: marker[] = [];   
+  
+    pointsForPolyline: coord[] = [];
   
 
     constructor(private _mapService: MapService, private _applicationRef: ApplicationRef) {
-
+                    console.log('MapComponent ctor');
     }
 
     ngOnInit() {    
@@ -40,9 +42,14 @@ export class MapComponent implements OnInit {
        this._mapService
             .getLatLng(this.startingPoint)
             .subscribe(
-                data => this.placeMarkerOnGeocodedPlace(data),
-                err => console.error(err)
+                (data: any) => this.placeMarkerOnGeocodedPlace(data),
+                (err: any) => console.error(err)
             );
+    }
+
+    resetStartingPoint() {
+        this.pointsForPolyline = [];
+        this.startingPoint = "";
     }
 
     placeMarkerOnGeocodedPlace(location: any) {  
@@ -51,13 +58,22 @@ export class MapComponent implements OnInit {
             lat: parseFloat(location.geometry.location.lat()),
             lng: parseFloat(location.geometry.location.lng()),
             title: location.formatted_address,
+            icon: "app/map/images/yellowmarker.png",
             draggable: true
         };
-
+        // first marker is starting point of hike
+        if(this.pointsForPolyline.length === 0){
+            this.pointsForPolyline.push({lat: marker.lat, lng: marker.lng});
+        }
         this.markers  = [ ...this.markers, marker];
         console.log(this.markers);
         this._applicationRef.tick();
-        
+    }
+
+    updatePolyline(event: any) {
+        let droppedLatForPolyline = parseFloat(event.coords.lat);
+        let droppedLngForPolyline = parseFloat(event.coords.lng);       
+        this.pointsForPolyline.push({lat: droppedLatForPolyline, lng: droppedLngForPolyline});        
     }
 
     onCoordMarkerDropped(event: any) {
@@ -94,3 +110,8 @@ interface marker{
     icon?: string;
     draggable:boolean;
   }
+
+interface coord{
+    lat: number;
+    lng: number;
+}  
