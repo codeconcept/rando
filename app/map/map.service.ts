@@ -1,6 +1,4 @@
-import { Injectable, NgZone } from '@angular/core';
-import { GoogleMapsAPIWrapper } from 'angular2-google-maps/core';
-import { MapsAPILoader } from 'angular2-google-maps/core';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Observer} from 'rxjs/Observer';
 
@@ -8,7 +6,7 @@ declare var google: any;
 
 @Injectable()
 export class MapService { 
-    constructor(private googleMapsAPIWrapper: GoogleMapsAPIWrapper) {
+    constructor() {
     }
 
     getLatLng(address: string) {        

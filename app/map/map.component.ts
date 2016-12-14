@@ -1,4 +1,4 @@
-import { Component, OnInit, ApplicationRef, Directive, ViewChild } from '@angular/core';
+import { Component, OnInit, ApplicationRef } from '@angular/core';
 import { SebmGoogleMapPolyline } from 'angular2-google-maps/core';
 import { MapService } from './map.service';
 
