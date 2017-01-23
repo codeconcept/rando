@@ -2,6 +2,18 @@
 
 <div>
     <a class="btn btn-default" (click)='goBack()'>
-		<i class='glyphicon glyphicon-arrow-left'></i> retour
-	</a>
+			<i class='glyphicon glyphicon-arrow-left'></i> retour !!
+		</a>
 </div>
+
+<div *ngIf="hike">
+		<h2>{{ hike.name }}</h2>
+		<div>{{ hike.region }} - {{ hike.area }}</div>
+		<div>
+				départ : {{ hike.startingPoint }} <br>
+				distance : {{ hike.distance}} {{ hike.distanceUnit }} <br>
+				durée : {{ hike.duration }} minutes <br>
+				description : {{ hike.description }}
+		</div>
+</div>
+<div *ngIf="!hike">Pas de randonnées correspondante trouvée</div>

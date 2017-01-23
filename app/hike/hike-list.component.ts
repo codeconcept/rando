@@ -28,10 +28,19 @@ export class HikeListComponent  implements OnInit {
     ngOnInit() {
         // this.hikes = this._hikeService.getHikes();
         // console.log(this.hikes);    
-        this._hikeService.getHikesFromAPI()
+        
+        // this._hikeService.getHikesFromAPI()
+        //                     .subscribe(
+        //                         res => this.hikes = res,
+        //                         err => this.errorMessage = err);
+
+        
+        this._hikeService.getHikesFromAPIwithCache()
                             .subscribe(
-                                res => this.hikes = res,
-                                err => this.errorMessage = err);
+                                    res => this.hikes = res,
+                                    err => console.error(err.status)
+                            );
+        // console.log(this.hikes);
     }
 
     toggleToMyTodoHikes(hikeToAdd: Hike) {
