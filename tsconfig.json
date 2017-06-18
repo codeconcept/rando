@@ -11,7 +11,9 @@
     "suppressImplicitAnyIndexErrors": true,
     "typeRoots": [
       "./node_modules/@types/"
-    ]
+    ],
+    "skipLibCheck": true,
+    "lib": [ "es2016" ]
   },
   "compileOnSave": true,
   "exclude": [
