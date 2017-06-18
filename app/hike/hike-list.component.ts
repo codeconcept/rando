@@ -26,16 +26,14 @@ export class HikeListComponent  implements OnInit {
     constructor(private _hikeService: HikeService){ }
 
     ngOnInit() {
-        this.hikes = this._hikeService.getHikes();
-        console.log(this.hikes);    
+        // this.hikes = this._hikeService.getHikes();
+        // console.log(this.hikes);    
         
         this._hikeService.getHikesFromAPIwithCache()
                             .subscribe(
                                 res => this.hikes = res,
-                                err => this.errorMessage = err);
-        
+                                err => this.errorMessage = err);       
 
-        console.log(this.hikes);
     }
 
     toggleToMyTodoHikes(hikeToAdd: Hike) {

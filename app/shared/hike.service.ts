@@ -42,6 +42,8 @@ export class HikeService {
     private observable: Observable<any>;
     private url: string = 'app/api/hikes.json';
 
+    BASE_URL = 'http://localhost:3003/api';
+
     constructor(private _http:Http) {
         
     }
@@ -51,7 +53,7 @@ export class HikeService {
     }
 
     getHikesFromAPI() {
-        return this._http.get('app/api/hikes.json')
+        return this._http.get(`${this.BASE_URL}/hikes`)
             .do(x => console.log(x))
             .map(hikes => hikes.json())
             .catch(error => {
@@ -68,7 +70,7 @@ export class HikeService {
             return this.observable;
         } else {
             this.observable = this._http
-                    .get(this.url)
+                    .get(`${this.BASE_URL}/hikes`)
                     .map(response => {
                         this.observable = null;
                         this.data = response.json();
